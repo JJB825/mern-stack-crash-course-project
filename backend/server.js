@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const workoutRoutes = require('./routes/workouts');
 
@@ -14,6 +15,12 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+app.use(
+  cors({
+    origin: 'https://workouts-frontend-nse2.onrender.com',
+  })
+);
 
 // routes
 app.use('/api/workouts', workoutRoutes);

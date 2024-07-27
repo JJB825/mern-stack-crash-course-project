@@ -11,7 +11,9 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const response = await fetch('/api/workouts');
+        const response = await fetch(
+          `https://workouts-backend-r5wt.onrender.com/api/workouts`
+        );
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
