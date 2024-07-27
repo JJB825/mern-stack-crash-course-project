@@ -14,11 +14,13 @@ const Home = () => {
         const response = await fetch('/api/workouts');
 
         if (!response.ok) {
-          throw new Error(`${response.status} ${response.statusText}`);
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
 
         const contentType = response.headers.get('content-type');
         if (!contentType || !contentType.includes('application/json')) {
+          const text = await response.text();
+          console.error('Received non-JSON response:', text);
           throw new TypeError('Received non-JSON response');
         }
 
