@@ -8,7 +8,7 @@ const WorkoutDetails = ({ workout }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      'https://workouts-backend-r5wt.onrender.com/api/workouts' + workout._id,
+      'https://workouts-backend-r5wt.onrender.com/api/workouts/' + workout._id,
       {
         method: 'DELETE',
       }
